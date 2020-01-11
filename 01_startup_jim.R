@@ -1,34 +1,30 @@
 #' Working with the .Renviron file
 
-## We will be generating a Github Personal Access Token (PAT), adding it to
-## your .Renviron file, creating a new project, commiting it with git and then
-## using our PAT to uploading it to GitHub.
+## We will be editing the .Renviron to make R be strict about checking
+## conditions with length greater than 1.
 
-## The following functions from the `usethis` package will be very useful for this.
+#' As an example, take the following vector and check if the values are > 0.
+x <- c(1, -2)
 
-- usethis::use_readme_md()
-- usethis::create_project()
-- usethis::browse_github_pat()
-- usethis::use_git()
-- usethis::use_github()
-- usethis::edit_r_environ()
+#' Write an if-statement that prints "Positive" if x is greater than 0
+## and "Negative" if it's < 0. You will see a warning; that is ok!
+if (x > 0) {
+  print("Positive")
+} else if (x < 0) {
+  print("Negative")
+}
 
-#' Generate a GitHub Personal Access Token
-## Be sure to check the scopes to allow creation of new repositories
-usethis::browse_github_pat()
-
-#' Add a GitHub Personal Access Token to your .Renviron
-## The environment variable should be called `GITHUB_PAT`
+#' Edit your .Renviron
+## Add the following: _R_CHECK_LENGTH_1_CONDITION_=true
 usethis::edit_r_environ()
 
-#' Create a new project
-usethis::create_project("wtf")
+#' Restart R
 
-#' Create a README.md in your new project
-usethis::use_readme_md()
+#' Run the code to print Positive/Negative again
+x <- c(1, -2)
 
-#' Commit the changes in git
-usethis::use_git()
-
-#' Push the project to GitHub
-usethis::use_github()
+if (x > 0) {
+  print("Positive")
+} else if (x < 0) {
+  print("Negative")
+}
