@@ -1,21 +1,19 @@
 #' Working with the .Renviron file
 
-## We will be generating a Github Personal Access Token (PAT), adding it to
-## your .Renviron file, creating a new project, commiting it with git and then
-## using our PAT to uploading it to GitHub.
+## We will be editing the .Renviron to make R be strict about checking
+## conditions with length greater than 1.
 
-## functions from the `usethis` package will be very useful for this.
+## There is a function in the usethis package to edit your .Renviron.
 
-#' Generate a GitHub Personal Access Token
-## Be sure to check the scopes to allow creation of new repositories
+#' As an example, take the following vector and check if the values are > 0.
+x <- c(1, -2)
 
-#' Add a GitHub Personal Access Token to your .Renviron
-## The environment variable should be called `GITHUB_PAT`
+#' Write an if-statement that prints "Positive" if x is greater than 0
+## and "Negative" if it's < 0. You will see a warning; that is ok!
 
-#' Create a new project
+#' Edit your .Renviron
+## Add the following: _R_CHECK_LENGTH_1_CONDITION_=true
 
-#' Create a README.md in your new project
+#' Restart R
 
-#' Commit the changes in git
-
-#' Push the project to GitHub
+#' Run the code to print Positive/Negative again
